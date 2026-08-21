@@ -1,198 +1,38 @@
-[README.md](https://github.com/user-attachments/files/31290294/README.md)
-# gqs-algoritmo-01-py# Desafio de Lógica — Investigação de Palíndromos
+# Desafio de Lógica — Investigação de Palíndromos
 
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![GitHub](https://img.shields.io/badge/GitHub-Repositório-black)
 ![Markdown](https://img.shields.io/badge/Markdown-Documentação-green)
 
-## Nível 1 — O Básico da Investigação
+Este projeto faz parte de uma atividade de investigação e análise de código. O objetivo foi entender como o programa funciona, observar o comportamento dos testes e documentar os resultados encontrados.
 
-> 💡 **Dica visual:** os blocos marcados como `python`, `bash`, `console` e `regex` aparecem com cores automaticamente no GitHub, facilitando a leitura do código.
+---
 
+# Nível 1 — O Básico da Investigação
 
-### O que o código faz?
+## O que o código faz?
 
-Neste desafio, o programa analisa uma frase para verificar se ela é um **palíndromo**.
+O programa tem como objetivo verificar se uma palavra ou frase pode ser considerada um **palíndromo**.
 
-Um palíndromo é uma palavra ou frase que pode ser lida de frente para trás e de trás para frente e continua igual.
+Um palíndromo é uma palavra ou frase que pode ser lida de frente para trás e de trás para frente da mesma maneira.
 
-Por exemplo:
+Um exemplo simples é:
 
 ```text
 ovo
 ```
 
-Ao contrário, continua sendo:
+Ao inverter a palavra, o resultado continua sendo:
 
 ```text
 ovo
 ```
 
-No programa, a frase passa por uma limpeza antes da comparação. O código remove alguns caracteres, transforma todas as letras em minúsculas, inverte o texto e compara o resultado.
+No programa analisado, a frase passa por algumas etapas antes da comparação.
 
-Se o texto normal for igual ao texto invertido, o programa retorna `True`. Caso contrário, retorna `False`.
+Primeiro, alguns caracteres são removidos. Depois, todas as letras são transformadas em minúsculas. Em seguida, o texto é invertido.
 
----
-
-### Como executar?
-
-Como este repositório está em **Python**, não é necessário compilar o arquivo antes da execução.
-
-Primeiro, abro o terminal na pasta onde está o arquivo:
-
-```bash
-cd C:\Users\grafi\Downloads
-```
-
-Depois executo:
-
-```bash
-python DesafioLogica.py
-```
-
-O programa é executado e os resultados aparecem diretamente no terminal.
-
-> Observação: o enunciado cita `javac` e `java`, que são comandos utilizados em projetos Java. Como este projeto utiliza Python, o comando correto para execução é `python DesafioLogica.py`.
-
----
-
-### Exemplo de saída
-
-Ao executar o programa, o terminal apresenta:
-
-```console
-Teste 1: False
-Teste 2: True
-```
-
-Esses foram os resultados reais obtidos durante a execução.
-
----
-
-## Nível 2 — Engenharia Reversa e Análise de Comportamento
-
-### Desvendando os métodos
-
-#### Qual é o papel do `main`?
-
-No Python, o programa utiliza:
-
-```python
-if __name__ == "__main__":
-```
-
-Essa estrutura verifica se o arquivo está sendo executado diretamente.
-
-Quando isso acontece, o programa cria as duas frases de teste:
-
-```python
-texto1 = "A sacada da casa de cadá"
-texto2 = "Socorram-me, subi no ônibus em Marrocos"
-```
-
-Depois, cada frase é enviada para a função `analisar()` e o resultado é mostrado no terminal:
-
-```python
-print(f"Teste 1: {analisar(texto1)}")
-print(f"Teste 2: {analisar(texto2)}")
-```
-
-Na prática, considero essa parte como o ponto de partida do programa, porque é ali que os testes são executados.
-
----
-
-### Entendendo a função `analisar(entrada)`
-
-A função começa assim:
-
-```python
-def analisar(entrada):
-```
-
-Ela recebe um texto chamado `entrada` e verifica se esse texto pode ser considerado um palíndromo.
-
-#### 1. Verificação da entrada
-
-```python
-if entrada is None:
-    return False
-```
-
-Essa parte verifica se existe algum conteúdo para analisar.
-
-Se a entrada for `None`, ou seja, se não houver texto, a função retorna `False` e encerra a análise.
-
----
-
-#### 2. Limpeza do texto
-
-```python
-limpa = re.sub(r'[^a-zA-Z0-9]', '', entrada).lower()
-```
-
-Essa foi uma das linhas que mais precisei observar para entender o comportamento dos testes.
-
-A função `re.sub()` faz substituições no texto usando uma expressão regular.
-
-A expressão:
-
-```regex
-[^a-zA-Z0-9]
-```
-
-procura qualquer caractere que **não seja** uma letra de `a` até `z`, uma letra de `A` até `Z` ou um número de `0` até `9`.
-
-Esses caracteres são substituídos por uma string vazia:
-
-```python
-''
-```
-
-Na prática, isso remove espaços, vírgulas, hífens e outros caracteres especiais.
-
-Depois, o método:
-
-```python
-.lower()
-```
-
-transforma todas as letras em minúsculas.
-
-Isso evita que uma letra maiúscula seja considerada diferente da mesma letra minúscula.
-
----
-
-#### 3. Inversão do texto
-
-```python
-invertida = limpa[::-1]
-```
-
-Essa linha inverte o texto já limpo.
-
-O `[::-1]` é um recurso de fatiamento do Python chamado *slicing*.
-
-Por exemplo:
-
-```text
-casa
-```
-
-fica:
-
-```text
-asac
-```
-
----
-
-#### 4. Comparação
-
-```python
-return limpa == invertida
-```
-
-Aqui o programa compara o texto limpo com o texto invertido.
+No final, o programa compara o texto limpo com o texto invertido.
 
 Se forem iguais, retorna:
 
@@ -200,7 +40,7 @@ Se forem iguais, retorna:
 True
 ```
 
-Se forem diferentes, retorna:
+Caso sejam diferentes, retorna:
 
 ```python
 False
@@ -208,46 +48,280 @@ False
 
 ---
 
-### O Mistério dos Testes
+## Como executar?
 
-Quando executei o programa, obtive:
+Como este projeto utiliza **Python**, não é necessário compilar o arquivo antes de executar.
+
+Primeiro, abro o terminal na pasta onde o arquivo está salvo.
+
+No meu caso:
+
+```bash
+cd C:\Users\grafi\Downloads
+```
+
+Depois executo o programa com:
+
+```bash
+python DesafioLogica.py
+```
+
+Após executar o comando, o Python roda o arquivo e apresenta os resultados diretamente no terminal.
+
+> **Observação:** o enunciado da atividade cita os comandos `javac` e `java`, que são utilizados na linguagem Java. Como este repositório utiliza Python, o comando utilizado para executar o programa é `python DesafioLogica.py`.
+
+---
+
+## Exemplo de saída
+
+Ao executar o programa, o console apresenta:
 
 ```console
 Teste 1: False
 Teste 2: True
 ```
 
-#### Teste 1
+Esses foram os resultados reais encontrados durante a execução do programa.
 
-A primeira frase é:
+---
 
-```text
-A sacada da casa de cadá
+# Nível 2 — Engenharia Reversa e Análise de Comportamento
+
+## Desvendando os métodos
+
+### Qual é o papel do `main`?
+
+No Python, o programa utiliza a seguinte estrutura:
+
+```python
+if __name__ == "__main__":
 ```
 
-O resultado foi:
+Essa estrutura verifica se o arquivo está sendo executado diretamente.
+
+Quando isso acontece, o programa cria duas frases para serem utilizadas nos testes:
+
+```python
+texto1 = "A sacada da casa de cadá"
+texto2 = "Socorram-me, subi no ônibus em Marrocos"
+```
+
+Depois, cada uma dessas frases é enviada para a função `analisar()`.
+
+```python
+print(f"Teste 1: {analisar(texto1)}")
+print(f"Teste 2: {analisar(texto2)}")
+```
+
+Os resultados retornados pela função são mostrados no terminal.
+
+De forma simples, considero essa parte como o ponto de partida do programa, pois é nela que os testes são executados.
+
+---
+
+## Entendendo a função `analisar(entrada)`
+
+A função começa da seguinte forma:
+
+```python
+def analisar(entrada):
+```
+
+Ela recebe um texto chamado `entrada` e analisa se esse texto pode ser considerado um palíndromo.
+
+### 1. Verificação da entrada
+
+```python
+if entrada is None:
+    return False
+```
+
+Essa parte verifica se existe algum conteúdo para ser analisado.
+
+Se a entrada for `None`, significa que não existe texto para analisar.
+
+Nesse caso, a função retorna:
 
 ```python
 False
 ```
 
-O motivo está na expressão regular utilizada:
-
-```python
-[^a-zA-Z0-9]
-```
-
-Ela aceita apenas letras sem acento e números.
-
-Por isso, o caractere `á` não é considerado uma letra válida pela expressão e acaba sendo removido durante a limpeza.
-
-Com essa remoção, o conteúdo analisado é alterado e a comparação com o texto invertido não resulta em igualdade.
-
-Por isso, o Teste 1 retorna `False`.
+e encerra a execução.
 
 ---
 
-#### Teste 2
+### 2. Limpeza do texto
+
+Depois temos:
+
+```python
+limpa = re.sub(r'[^a-zA-Z0-9]', '', entrada).lower()
+```
+
+Essa foi uma das partes mais importantes para entender o comportamento do programa.
+
+A função:
+
+```python
+re.sub()
+```
+
+faz substituições dentro de um texto utilizando uma expressão regular.
+
+A expressão usada é:
+
+```regex
+[^a-zA-Z0-9]
+```
+
+Ela procura qualquer caractere que **não seja**:
+
+* uma letra de `a` até `z`;
+* uma letra de `A` até `Z`;
+* um número de `0` até `9`.
+
+Os caracteres encontrados são substituídos por:
+
+```python
+''
+```
+
+Ou seja, são removidos.
+
+Na prática, isso pode remover espaços, vírgulas, hífens, acentos e outros caracteres que não estejam dentro do padrão definido.
+
+Depois é utilizado:
+
+```python
+.lower()
+```
+
+Esse método transforma todas as letras em minúsculas.
+
+Por exemplo:
+
+```text
+OVO
+```
+
+passa a ser:
+
+```text
+ovo
+```
+
+Isso evita que letras maiúsculas e minúsculas sejam consideradas diferentes durante a comparação.
+
+---
+
+### 3. Inversão do texto
+
+Depois aparece:
+
+```python
+invertida = limpa[::-1]
+```
+
+Essa linha inverte o texto que já foi limpo.
+
+O:
+
+```python
+[::-1]
+```
+
+é um recurso do Python chamado **slicing**, ou fatiamento.
+
+Por exemplo:
+
+```text
+casa
+```
+
+quando invertida fica:
+
+```text
+asac
+```
+
+---
+
+### 4. Comparação
+
+Por último, temos:
+
+```python
+return limpa == invertida
+```
+
+Aqui o programa compara o texto limpo com o texto invertido.
+
+Se os dois forem iguais, o resultado será:
+
+```python
+True
+```
+
+Se forem diferentes:
+
+```python
+False
+```
+
+---
+
+# O Mistério dos Testes
+
+Ao executar o programa, obtive:
+
+```console
+Teste 1: False
+Teste 2: True
+```
+
+## Teste 1
+
+A primeira frase analisada é:
+
+```text
+A sacada da casa de cadá
+```
+
+O programa retorna:
+
+```python
+False
+```
+
+O motivo está relacionado à expressão regular:
+
+```regex
+[^a-zA-Z0-9]
+```
+
+Essa expressão aceita apenas letras sem acento e números.
+
+Por isso, o caractere:
+
+```text
+á
+```
+
+não é considerado válido pelo padrão e acaba sendo removido durante a limpeza.
+
+Com essa remoção, o texto utilizado na comparação é alterado.
+
+Quando o programa compara o texto limpo com o texto invertido, eles não são iguais.
+
+Por isso o resultado do Teste 1 é:
+
+```python
+False
+```
+
+---
+
+## Teste 2
 
 A segunda frase é:
 
@@ -255,46 +329,61 @@ A segunda frase é:
 Socorram-me, subi no ônibus em Marrocos
 ```
 
-O resultado foi:
+O resultado apresentado foi:
 
 ```python
 True
 ```
 
-Durante a limpeza, os espaços, o hífen, a vírgula e os caracteres que não correspondem ao padrão definido são removidos.
+Durante a limpeza, espaços, hífen, vírgula e caracteres que não fazem parte do padrão utilizado são removidos.
 
-Depois dessa limpeza, o texto resultante forma uma sequência que continua igual quando invertida.
+Depois dessa limpeza, o texto resultante forma uma sequência que continua igual quando é invertida.
 
-Por esse motivo, a comparação:
+Por isso, a comparação:
 
 ```python
 limpa == invertida
 ```
 
-resulta em `True`.
+resulta em:
+
+```python
+True
+```
 
 ---
 
-## Nível 3 — Toque Profissional
+# Nível 3 — Toque Profissional
 
-### Resumo do funcionamento
+## Tecnologias utilizadas
 
-| Etapa | O que acontece |
-|---|---|
-| 1 | O programa recebe uma frase |
-| 2 | Verifica se a entrada é válida |
-| 3 | Remove caracteres que não fazem parte do padrão |
-| 4 | Transforma as letras em minúsculas |
-| 5 | Inverte o texto |
-| 6 | Compara o texto normal com o invertido |
-| 7 | Retorna `True` ou `False` |
+| Tecnologia | Utilização                                |
+| ---------- | ----------------------------------------- |
+| Python     | Desenvolvimento e execução do programa    |
+| Regex      | Limpeza e tratamento do texto             |
+| Markdown   | Documentação do projeto                   |
+| GitHub     | Versionamento e publicação do repositório |
 
-### Resultados dos testes
+---
 
-| Teste | Frase | Resultado |
-|---|---|---|
-| Teste 1 | `A sacada da casa de cadá` | `False` |
-| Teste 2 | `Socorram-me, subi no ônibus em Marrocos` | `True` |
+## Fluxo do programa
+
+1. O programa recebe uma frase.
+2. Verifica se existe uma entrada válida.
+3. Remove caracteres que não fazem parte do padrão.
+4. Transforma todas as letras em minúsculas.
+5. Inverte o texto.
+6. Compara o texto limpo com o texto invertido.
+7. Retorna `True` ou `False`.
+
+---
+
+## Resultados dos testes
+
+| Teste   | Frase analisada                           | Resultado |
+| ------- | ----------------------------------------- | --------- |
+| Teste 1 | `A sacada da casa de cadá`                | `False`   |
+| Teste 2 | `Socorram-me, subi no ônibus em Marrocos` | `True`    |
 
 ---
 
@@ -313,6 +402,7 @@ def analisar(entrada):
 
     return limpa == invertida
 
+
 if __name__ == "__main__":
     texto1 = "A sacada da casa de cadá"
     texto2 = "Socorram-me, subi no ônibus em Marrocos"
@@ -323,12 +413,14 @@ if __name__ == "__main__":
 
 ---
 
-## Sobre a Autora
+# Sobre a Autora
 
 **Michele Carvalho**
 
-Sou estudante de Ciência da Computação e realizei este desafio com o objetivo de entender melhor a lógica do código, observar seu comportamento e documentar o que acontece durante a execução.
+Sou estudante de Ciência da Computação e realizei este desafio com o objetivo de compreender melhor a lógica de programação, analisar o comportamento do código e praticar documentação utilizando Markdown.
 
-Este repositório foi criado a partir de um **fork do projeto original**, e a documentação foi desenvolvida como parte da atividade proposta.
+Este repositório foi criado a partir de um **fork do projeto original**.
 
-Durante a análise, procurei explicar o código de forma simples e direta, registrando também o comportamento real dos testes e o motivo dos resultados encontrados.
+Durante a atividade, procurei entender cada parte do código, executar os testes e investigar por que cada resultado aconteceu.
+
+A documentação foi organizada utilizando títulos, listas, tabelas, badges e blocos de código para facilitar a leitura e deixar o projeto mais organizado.
